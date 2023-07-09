@@ -1,17 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
-import { MyReactComponent } from '../components/MyReactComponent';
+import { Bio } from '../components/Bio';
+import { Page } from '../components/Page';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Kim">
 	<main>
-		<MyReactComponent />
+		<Page>
+			<Bio />
+		</Page>
 	</main>
 </Layout>
 
 <style>
-	main {
+	/* main {
 		margin: auto;
 		padding: 1.5rem;
 		max-width: 60ch;
@@ -20,8 +23,8 @@ import { MyReactComponent } from '../components/MyReactComponent';
 		font-size: 3rem;
 		font-weight: 800;
 		margin: 0;
-	}
-	.text-gradient {
+	} */
+	/* .text-gradient {
 		background-image: var(--accent-gradient);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
@@ -52,5 +55,5 @@ import { MyReactComponent } from '../components/MyReactComponent';
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 1rem;
 		padding: 0;
-	}
+	} */
 </style>
