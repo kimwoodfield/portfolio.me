@@ -1,12 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 import { Bio } from '../components/Bio';
 import { Page } from '../components/Page';
+import ThemeIcon from '../components/ThemeIcon.astro';
 ---
 
 <Layout title="Kim">
 	<main>
+		<section class="p-4 mr-3 flex justify-end">
+			<ThemeIcon />
+		</section>
 		<Page>
 			<Bio />
 		</Page>
@@ -14,46 +17,12 @@ import { Page } from '../components/Page';
 </Layout>
 
 <style>
-	/* main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
+	html.dark {
+		background-color: rgb(15, 17, 23);
+		color: #fff;
 	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	} */
-	/* .text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
+
+	.dark .nav-links a {
+		color: #fff;
 	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	} */
 </style>
