@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
+import { fetchAnimeWatchedCount } from '../utils/getAnilistAnimeCount';
 
 type Props = {
     children: React.ReactNode
+    href?: string;
 }
+
+type LinkProps = {
+    children: React.ReactNode
+    href?: string;
+    additionalStyles?: string;
+}
+
+const date = new Date().toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+})
 
 export const Bio = (): React.JSX.Element => {
   return (
@@ -14,6 +29,14 @@ export const Bio = (): React.JSX.Element => {
 };
 
 const Text = () => {
+  const [animeCount, setAnimeCount] = useState(0);
+
+  useEffect(() => {
+    fetchAnimeWatchedCount().then(data => {
+      setAnimeCount(data)
+    })
+  }, [])
+
   return (
     <div className='max-w-8xl'>
       <HeaderText />
@@ -27,7 +50,29 @@ const Text = () => {
           Bachelor of Information Technology (Computer Science). I also enjoy
           design and going to the gym when I have time.
         </Paragraph>
-        <Paragraph>As of July 8th, 2023 I have watched 1 anime</Paragraph>
+        <Paragraph>
+          As of <span className='text-gray-500'>{date}</span> I have watched{" "}
+          <Link
+            href="https://anilist.co/user/zeerohh/"
+            additionalStyles="text-sky-300"
+          >
+            {animeCount} anime
+          </Link>
+        </Paragraph>
+        <Socials>
+          <Link 
+            href="https://github.com/kimwoodfield" 
+            additionalStyles="text-3xl text-gray-400 hover:text-gray-600 cursor-pointer"
+          >
+            <AiOutlineGithub />
+          </Link>
+          <Link 
+            href="https://www.linkedin.com/in/kim-woodfield/" 
+            additionalStyles='text-3xl text-gray-400 hover:text-gray-600 cursor-pointer ml-4'
+          >
+            <AiFillLinkedin />
+          </Link>
+        </Socials>
       </BodyText>
     </div>
   );
@@ -55,4 +100,20 @@ const BodyText = ({ children }: Props) => {
 
 const Paragraph = ({ children }: Props) => {
     return <p className='mt-4 text-lg lg:text-xl'>{children}</p>
+}
+
+const Link = ({ children, href, additionalStyles }: LinkProps) => {
+  return (
+    <a 
+      href={href} 
+      className={`${additionalStyles}`}
+      target="_blank"
+    >
+      {children}
+    </a>
+  )
+}
+
+const Socials = ({ children }: Props) => {
+  return <div className='flex mt-5'>{children}</div>
 }
