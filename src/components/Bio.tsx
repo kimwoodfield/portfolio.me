@@ -80,11 +80,11 @@ const Text = () => {
 
 const Image = () => {
   return (
-    <div className='md:w-96 md:flex md:justify-end'>
+    <div className='md:w-96 md:h-96 md:flex md:justify-end'>
       <img
         src="/me.png"
         alt="My image"
-        className="rounded-md w-72 min-w-72"
+        className="rounded-md w-72 h-72 min-w-72 min-h-72"
       />
     </div>
   );
