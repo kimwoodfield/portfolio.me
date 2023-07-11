@@ -3,11 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import { Bio } from '../components/Bio';
 import { Page } from '../components/Page';
 import ThemeIcon from '../components/ThemeIcon.astro';
+import { PfpIcon } from '../components/PfpIcon';
 ---
 
 <Layout title="Kim">
 	<main>
-		<section class="p-4 mr-3 flex justify-end">
+		<section class="p-4 mr-3 ml-3 flex justify-between">
+			<PfpIcon />
 			<ThemeIcon />
 		</section>
 		<Page>

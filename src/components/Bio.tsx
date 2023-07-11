@@ -7,7 +7,7 @@ type Props = {
     href?: string;
 }
 
-type LinkProps = {
+export type LinkProps = {
     children: React.ReactNode
     href?: string;
     additionalStyles?: string;
