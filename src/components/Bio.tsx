@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
 import { fetchAnimeWatchedCount } from '../utils/getAnilistAnimeCount';
+import { GithubOutlined } from "@ant-design/icons";
+import { LinkedinFilled } from "@ant-design/icons/lib/icons";
 
 type Props = {
     children: React.ReactNode
@@ -64,13 +65,13 @@ const Text = () => {
             href="https://github.com/kimwoodfield" 
             additionalStyles="text-3xl text-gray-400 hover:text-gray-600 cursor-pointer"
           >
-            <AiOutlineGithub />
+            <GithubOutlined />
           </Link>
           <Link 
             href="https://www.linkedin.com/in/kim-woodfield/" 
             additionalStyles='text-3xl text-gray-400 hover:text-gray-600 cursor-pointer ml-4'
           >
-            <AiFillLinkedin />
+            <LinkedinFilled />
           </Link>
         </Socials>
       </BodyText>
