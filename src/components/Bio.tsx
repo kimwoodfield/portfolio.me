@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { fetchAnimeWatchedCount } from '../utils/getAnilistAnimeCount';
 import { GithubOutlined } from "@ant-design/icons";
 import { LinkedinFilled } from "@ant-design/icons/lib/icons";
+import useSWR from 'swr';
 
 type Props = {
     children: React.ReactNode
@@ -30,14 +31,6 @@ export const Bio = (): React.JSX.Element => {
 };
 
 const Text = () => {
-  const [animeCount, setAnimeCount] = useState(0);
-
-  useEffect(() => {
-    fetchAnimeWatchedCount().then(data => {
-      setAnimeCount(data)
-    })
-  }, [])
-
   return (
     <div className='max-w-8xl'>
       <HeaderText />
@@ -53,12 +46,7 @@ const Text = () => {
         </Paragraph>
         <Paragraph>
           As of <span className='text-gray-500'>{date}</span> I have watched{" "}
-          <Link
-            href="https://anilist.co/user/zeerohh/"
-            additionalStyles="text-sky-300"
-          >
-            {animeCount} anime
-          </Link>
+          <AnimeLink />
         </Paragraph>
         <Socials>
           <Link 
@@ -117,4 +105,18 @@ const Link = ({ children, href, additionalStyles }: LinkProps) => {
 
 const Socials = ({ children }: Props) => {
   return <div className='flex mt-5'>{children}</div>
+}
+
+const AnimeLink = () => {
+  const user = 'zeerohh'; 
+  const { data } = useSWR(`user-anime-count-${user}`, fetchAnimeWatchedCount);
+
+  return (
+    <Link
+      href="https://anilist.co/user/zeerohh/"
+      additionalStyles="text-sky-300"
+    >
+      {data ? `${data} anime` : '0 anime'}
+    </Link>
+  );
 }
