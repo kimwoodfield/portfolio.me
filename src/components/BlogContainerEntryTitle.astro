@@ -1,0 +1,33 @@
+<div class="mb-2 flex w-full" id="titleContainer">
+  <div class="inline-block">
+    <h2 class="font-bold" id="blogTitle">
+      😎 This is the first blog post on this site!
+    </h2>
+  </div>
+</div>
+
+<script>
+  import { annotate } from "rough-notation";
+
+  let annotation: any;
+  let e: HTMLElement | null = null;
+  let blogTitle: HTMLElement | null = null;
+
+  $: {
+    e = document.querySelector("#titleContainer") as HTMLElement;
+    blogTitle = document.querySelector("#blogTitle") as HTMLElement;
+
+    if (e && blogTitle) {
+      if (annotation) {
+        annotation.remove();
+      }
+      annotation = annotate(blogTitle, { type: "highlight", color: "#d4579a" });
+    }
+  }
+
+  // show/hide highlight on hover
+  if (annotation && e) {
+    e.addEventListener("mouseenter", () => annotation.show());
+    e.addEventListener("mouseleave", () => annotation.hide());
+  }
+</script>

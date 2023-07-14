@@ -1,10 +1,21 @@
 ---
+import BlogContainerEntryTitle from "./BlogContainerEntryTitle.astro";
 ---
 
 <div class="mt-6">
-    Blogs
-    <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus perferendis blanditiis expedita unde amet aliquid iure, quibusdam nobis? Soluta quasi dolore quidem atque, eos officia aspernatur unde incidunt ex veniam!
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur ipsa eos, quisquam reiciendis possimus, quidem quam eaque, voluptatibus sed porro quod. Amet placeat laboriosam laudantium nisi, fugit nihil labore aperiam.
-    </p>
+  <!-- Blogs -->
+  <a href="#">
+    <article>
+      <div class="flex text-base mb-2">
+        <time>over 1 year ago</time>
+        <div class="mx-2.5">·</div>
+        <p>20 min read</p>
+      </div>
+      <BlogContainerEntryTitle />
+      <p class="text-lg">
+        This is the first blog post on my site and this text just represents what
+        that post entry will look like when it's on the landing page.
+      </p>
+    </article>
+  </a>
 </div>
