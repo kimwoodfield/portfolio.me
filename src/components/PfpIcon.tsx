@@ -15,7 +15,7 @@ export const PfpIcon = () => {
 
 const Link = ({ children }: LinkProps) => {
     return (
-        <a href="#" className="cursor-pointer">
+        <a href="/" className="cursor-pointer">
             {children}
         </a>
     )

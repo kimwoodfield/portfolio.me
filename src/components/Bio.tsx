@@ -109,7 +109,7 @@ const Socials = ({ children }: Props) => {
 
 const AnimeLink = () => {
   const user = 'zeerohh'; 
-  const { data } = useSWR(`user-anime-count-${user}`, fetchAnimeWatchedCount);
+  const { data } = useSWR(`user-anime-count-${user}`, fetchAnimeWatchedCount); 
 
   return (
     <Link
