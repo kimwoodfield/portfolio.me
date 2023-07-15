@@ -2,27 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import { Bio } from '../components/Bio';
 import Content from '../components/Content.astro';
-import { Page } from '../components/Page';
-import SiteHeader from '../components/SiteHeader.astro';
 ---
 
 <Layout title="Kim">
-	<main>
-		<SiteHeader />
-		<Page>
-			<Bio client:load />
-			<Content />
-		</Page>
-	</main>
+	<Bio client:load />
+	<Content />
 </Layout>
-
-<style>
-	html.dark {
-		background-color: rgb(15, 17, 23);
-		color: #fff;
-	}
-
-	.dark .nav-links a {
-		color: #fff;
-	}
-</style>
