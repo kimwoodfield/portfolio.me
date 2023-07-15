@@ -1,21 +1,30 @@
 ---
 import BlogContainerEntryTitle from "./BlogContainerEntryTitle.astro";
----
+import { getCollection } from 'astro:content';
+import { getTimeSince } from '../utils/getTimeSince';
 
-<div class="mt-6">
-  <!-- Blogs -->
-  <a href="/posts/my-first-post">
-    <article>
-      <div class="flex text-base mb-2">
-        <time>over 1 year ago</time>
-        <div class="mx-2.5">·</div>
-        <p>20 min read</p>
+const allBlogPosts = await getCollection('blog');
+---
+<div class="flex flex-col gap-12 mt-6">
+{
+  allBlogPosts.reverse().map((post, index) => {
+    return (
+      <div>
+        <a href={`/posts/${post.slug}`}>
+          <article>
+            <div class="flex text-base mb-2">
+              <time>{getTimeSince(post.data.pubDate)}</time>
+              <div class="mx-2.5">·</div>
+              <p>{post.data.readingTime} min read</p>
+            </div>
+            <BlogContainerEntryTitle order={index} title={post.data.title} />
+            <p class="text-lg">
+              {post.data.description}
+            </p>
+          </article>
+        </a>
       </div>
-      <BlogContainerEntryTitle />
-      <p class="text-lg">
-        This is the first blog post on my site and this text just represents what
-        that post entry will look like when it's on the landing page.
-      </p>
-    </article>
-  </a>
+    )}
+  )
+}
 </div>

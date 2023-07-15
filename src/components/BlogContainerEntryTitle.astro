@@ -1,33 +1,40 @@
-<div class="mb-2 flex w-full" id="titleContainer">
+
+---
+;
+const { order, title } = Astro.props;
+---
+
+<div class="mb-2 flex w-full" id={`titleContainer-${order}`} data-order={order}>
   <div class="inline-block">
-    <h2 class="font-bold" id="blogTitle">
-      😎 This is the first blog post on this site!
+    <h2 class="font-bold blogTitle" id={`blogTitle-${order}`}>
+      {title}
     </h2>
   </div>
 </div>
 
 <script>
+
   import { annotate } from "rough-notation";
+  import type { RoughAnnotation } from "rough-notation/lib/model";
 
-  let annotation: any;
-  let e: HTMLElement | null = null;
-  let blogTitle: HTMLElement | null = null;
+  function initializeHighlight(element: HTMLElement) {
+    const order = element.getAttribute("data-order");
+    const titleContainer = document.getElementById(`titleContainer-${order}`);
+    const blogTitle = document.getElementById(`blogTitle-${order}`);
 
-  $: {
-    e = document.querySelector("#titleContainer") as HTMLElement;
-    blogTitle = document.querySelector("#blogTitle") as HTMLElement;
+    let annotation: RoughAnnotation | undefined = undefined;
 
-    if (e && blogTitle) {
-      if (annotation) {
-        annotation.remove();
-      }
+    if (titleContainer && blogTitle) {
       annotation = annotate(blogTitle, { type: "highlight", color: "#d4579a" });
+    }
+
+    // show/hide highlight on hover
+    if (annotation && titleContainer) {
+      titleContainer.addEventListener("mouseenter", () => annotation!.show());
+      titleContainer.addEventListener("mouseleave", () => annotation!.hide());
     }
   }
 
-  // show/hide highlight on hover
-  if (annotation && e) {
-    e.addEventListener("mouseenter", () => annotation.show());
-    e.addEventListener("mouseleave", () => annotation.hide());
-  }
+  const elements = document.querySelectorAll("[data-order]");
+  elements.forEach((element) => initializeHighlight(element as HTMLElement));
 </script>
