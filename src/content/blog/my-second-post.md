@@ -1,4 +1,5 @@
 ---
+layout: "../../layouts/Layout.astro"
 title: "😎 This is the second blog post on this site!"
 description: "This is the second blog post on my site and this text just represents what that post entry will look like when it's on the landing page."
 relatedPosts:
@@ -7,6 +8,7 @@ relatedPosts:
 tags: ['personal']
 readingTime: 5
 pubDate: 2023-07-14
+slug: my-second-post
 ---
 # My Second Blog Post
 

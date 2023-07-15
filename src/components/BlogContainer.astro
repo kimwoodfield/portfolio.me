@@ -10,7 +10,7 @@ const allBlogPosts = await getCollection('blog');
   allBlogPosts.reverse().map((post, index) => {
     return (
       <div>
-        <a href={`/posts/${post.slug}`}>
+        <a href={`/blog/${post.slug}`}>
           <article>
             <div class="flex text-base mb-2">
               <time>{getTimeSince(post.data.pubDate)}</time>
