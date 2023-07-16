@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/Layout.astro"
+layout: "../../layouts/BlogLayout.astro"
 title: "😎 This is the second blog post on this site!"
 description: "This is the second blog post on my site and this text just represents what that post entry will look like when it's on the landing page."
 relatedPosts:
@@ -10,6 +10,15 @@ readingTime: 5
 pubDate: 2023-07-14
 slug: my-second-post
 ---
+import PostHeader from '../../components/Post/PostHeader.astro';
+
+<PostHeader 
+    title={frontmatter.title}
+    description={frontmatter.description}
+    tags={frontmatter.tags}
+    pubDate={frontmatter.pubDate}
+    readingTime={frontmatter.readingTime}
+/>
 # My Second Blog Post
 
 Published on: 2022-07-14

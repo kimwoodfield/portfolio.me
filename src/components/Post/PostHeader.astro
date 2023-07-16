@@ -1,0 +1,25 @@
+---
+const {title, description, tags, pubDate, readingTime} = Astro.props;
+import { getTimeSince } from "../../utils/getTimeSince";
+const timeSincePost = getTimeSince(pubDate);
+---
+
+<header class="flex flex-col gap-3 mt-4">
+    <p>
+        <span class="uppercase text-[#d4579a] font-bold">Article</span>
+        <span class="mx-3">-</span>{readingTime} min read
+    </p>
+    <h1 class="text-7xl font-extrabold mb-4 leading-[5.3rem]">{title}</h1>
+    <h2 class="text-2xl	mb-4">{description}</h2>
+    <hr class="my-3" />
+    <div class="flex justify-between">
+        <div class="flex text-[#d4579a] font-bold">
+            {tags.map((tag: string, index: number) => 
+                (index === 0) ? <p>{tag}</p> : <p class="ml-6">{tag}</p>)}
+        </div>
+        <div>
+            <time>December 25, 2021</time>
+            <p>{timeSincePost}</p>
+        </div>
+    </div>
+</header>
