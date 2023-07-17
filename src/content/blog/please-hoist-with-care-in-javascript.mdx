@@ -1,0 +1,66 @@
+---
+layout: "../../layouts/BlogLayout.astro"
+title: "🪢 Please Hoist with care in JavaScript"
+description: "Hoisting is a tool in your JavaScript arsenal, but it should be considered carefully."
+relatedPosts:
+- about-me 
+- my-year-in-review 
+tags: ['JavaScript', 'Programming']
+readingTime: 5
+pubDate: 2023-07-14
+slug: please-hoist-with-care-in-javascript
+---
+import PostHeader from '../../components/Post/PostHeader.astro';
+import { Code } from 'astro/components';
+
+<PostHeader 
+    title={frontmatter.title}
+    description={frontmatter.description}
+    tags={frontmatter.tags}
+    pubDate={frontmatter.pubDate}
+    readingTime={frontmatter.readingTime}
+/>
+
+<h2 style="font-size:22px;font-weight:bold;">What is Hoisting in JavaScript?</h2>
+
+<p style="margin-bottom:22px;">Hoisting is a behavior in JavaScript where variable and function declarations are moved to the top of their containing scope during the execution phase, regardless of where they are defined in the code. This means you can use a variable or call a function before it's actually declared in the code.</p>
+
+<h2 style="font-size:22px;font-weight:bold;margin-bottom:6px">Example of Hoisting regular JavaScript variables</h2>
+<Code code={`
+    // First example:
+    console.log(name); // undefined
+
+    var name = "Kim";
+
+    // Second example:
+    console.log(name2); // Uncaught ReferenceError: name2 is not defined   
+
+    let name = "Kim";
+
+`} lang="js" wrap />
+<br />
+<h2 style="font-size:22px;font-weight:bold;margin-bottom:6px">Example of Hoisting JavaScript functions</h2>
+<Code code={`
+    // First example:
+    callMyName(); // "Kim"
+
+    function callMyName() {
+        console.log("Kim");
+    };
+
+    // Second example:
+    dontCallMyName(); // Uncaught ReferenceError: 
+    // can't access lexical declaration 'dontCallMyName'                   
+    // before initialization
+
+    const dontCallMyName = () => {
+        console.log("Kim");
+    };
+
+`} lang="js" wrap />
+<br />
+<h2 style="font-size:22px;font-weight:bold;margin-bottom:6px">Why the bloody hell does Hoisting exist in JavaScript?</h2>
+<p style="margin-bottom:22px;">Hoisting was introduced to allow developers to use variables and functions before they are defined in the code, making it more flexible to structure your programs. It was a design decision made in JavaScript to provide some level of convenience when organizing and writing code.</p>
+
+<h2 style="font-size:22px;font-weight:bold;margin-bottom:6px">So you've shown me what Hoisting is... but when do I use it?</h2>
+<p style="margin-bottom:22px;">That's the neat thing, you don't. Nah I'm just messing with you but in all seriousness, in my still fairly inexperienced opinion - to write clean and maintainable code, it's best to declare all your variables and functions before using them, regardless of hoisting. This practice helps avoid confusion and reduces the risk of unintended behavior caused by hoisting. By following this guideline, you can write more readable and predictable code.</p>
