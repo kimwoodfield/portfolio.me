@@ -41,6 +41,22 @@ const { title } = Astro.props;
 		padding: 0;
 		box-sizing: border-box;
 	}
+	#liked-songs-button {
+		padding: 8px 16px;
+		margin: 1px;
+		font-size: 18px;
+		border: 0.05px solid #e7e7e7;
+	}
+	.liked-songs-first-line {
+		background-color: #00000033;
+		min-width: 10%;
+		height: 1px;
+	}
+	.liked-songs-second-line {
+		background-color: #00000033;
+		width: 90%;
+		height: 1px;
+	}
 	html.dark {
 		background-color: rgb(15, 17, 23);
 		color: #94a3b8;
@@ -52,5 +68,19 @@ const { title } = Astro.props;
 
 	.dark .nav-links a {
 		color: #fff;
+	}
+
+	.dark #liked-songs-button {
+		background-color: #00000033;
+		color: #fff;
+		border: 1.5px solid #181c24;
+	}
+	.dark .liked-songs-first-line {
+		background-color: #e2e9ec;
+		opacity: 0.25;
+	}
+	.dark .liked-songs-second-line {
+		background-color: #e2e9ec;
+		opacity: 0.25;
 	}
 </style>
