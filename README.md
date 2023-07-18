@@ -1,9 +1,9 @@
-<h1 align="center">
+<h1>
    portfolio.me
 </h1>
 
-<h3 align="center">
+<h3>
   a web app that acts as a place for me to keep my random thoughts and opinions.
 </h3>
 
-<h6 align="center">Design inspired by [https://xetera.dev](https://xetera.dev)</h6>
+<em>Design inspired by [https://xetera.dev](https://xetera.dev)</em>
